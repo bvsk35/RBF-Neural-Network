@@ -1,18 +1,11 @@
 # RBF Neural Network
 ## Radial Basis Function Network
 ##### Author & Date: Sameer Kumar, 02/24/2019
-- This code is for building a Radial Basis Kernel (RBF) neural network.
-Polynomial Kernel SVM can also be build using this code. 
+- This code is for building a Radial Basis Kernel (RBF) neural network. RBF network has many applications like pattern recognition, function approximation and interpolation, classification problem etc. In this code I have implemented RBF network on a classification problem. 
 - Input Samples variable indicates total no. of points present in both Positive and Negative Classes
 Gaussian Standard Deviation is a free variable used in the Gaussian Kernel
-Order is a free variable used to control the order of the polynomial used in Polynomial Kernel
 Grid Size is controls the number of points to be searched on 1x1 grid to generate decision boundaries
-- Quadratic Optimization Problem:
-  - QP: Minimize- 1/2 * X.T * P * X + q.T * X
-  - ST: G * X <= h and A * X = b
-  - Matrices were selected based on above descritpion. But for the detailed description go through following link: http://cs229.stanford.edu/notes/cs229-notes3.pdf
-- Solution for the QP problem will not be accurate i.e. lagrange mulitpliers will not be absolute zero, so I have
-made values below 1.0e-04 to be zero. For Non Support Vectors lagrange mulitpliers are zero and for Support Vector they are
-greater than zero.
+- First part of the problem is to generate cluster centers using K-means algorithm. These centers acts as the RBF kernel centers. Half of the total center belong to one class and another half to other class. 
+- Using these centers and signum activation function we can build a single layer perceptron to find the optimal weights which will then give us the decision boundary. Which ever points on the grid gives us zero output in our trained RBF network it will acts as the boundary, similar to Kernel SVM. 
 - Postive Class is also represented by C_1 and Negative Class is also represented C_-1
 - Note: I have also attached results.
